@@ -1,0 +1,23 @@
+# Tested against Python 3.14.6.
+# These versions match the environment this build was verified against;
+# older pins (e.g. faster-whisper 1.0.3, numpy 1.26.x) are not guaranteed
+# to install/run on Python 3.14 and are no longer used here.
+PySide6==6.11.1
+faster-whisper==1.2.1
+numpy==2.5.1
+ffmpeg-python==0.2.0
+python-docx==1.2.0
+reportlab==5.0.0
+mutagen==1.48.1
+indic-transliteration==2.3.59
+
+# NOTE: indic-transliteration powers the optional "Romanized / English
+# Letters" output script. It is a pure-Python, offline Unicode mapping
+# library (no network calls, no model download) - it does not affect the
+# app's offline operation. If it's ever missing, engine/romanizer.py
+# degrades gracefully and simply leaves text in its original script
+# instead of failing.
+
+# NOTE: torch is intentionally NOT a dependency. GPU detection uses
+# ctranslate2 (already pulled in by faster-whisper) instead, so no
+# extra multi-GB dependency is required to support optional CUDA use.
